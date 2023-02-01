@@ -1,8 +1,8 @@
-import Navigator from './models/Navigator.js';
-import Url from './models/Url.js';
-import Store from './models/Store.js';
-import Product from './models/Product.js';
-import CartItem from './models/CartItem.js';
+import Navigator from './models/Navigator.js.js';
+import Url from './models/Url.js.js';
+import Store from './models/Store.js.js';
+import Product from './models/Product.js.js';
+import CartItem from './models/CartItem.js.js';
 
 document.addEventListener("DOMContentLoaded", (evt) =>{
 
