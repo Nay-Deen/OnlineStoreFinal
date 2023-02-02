@@ -1,8 +1,8 @@
-import Navigator from './models/Navigator.js.js';
-import Url from './models/Url.js.js';
-import Store from './models/Store.js.js';
-import Product from './models/Product.js.js';
-import CartItem from './models/CartItem.js.js';
+import Navigator from "./models/Navigator.js";
+import Url from './models/Url.js';
+import Store from './models/Store.js';
+import Product from './models/Product.js';
+import CartItem from './models/CartItem.js';
 
 document.addEventListener("DOMContentLoaded", (evt) =>{
 
@@ -44,14 +44,14 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
 
      store.setProducts(
          [
-             new Product(1, "Nadine's Ring", 50000, "test.png", "NEW"),
-             new Product(2, "Test's Ring", 150000, "test.png", "NEW"),
-             new Product(3, "Jane's Ring", 70000, "test.png", "NEW"),
-             new Product(4, "Theressa's Ring", 90000, "test.png", "NEW"),
-             new Product(5, "Jenny's Ring", 1750000, "test.png", "NEW"),
-             new Product(6, "Nadine's Ring", 4350000, "test.png", "NEW"),
-             new Product(7, "Nadine's Ring", 1250000, "test.png", "NEW"),
-             new Product(8, "Nadine's Ring", 2250000, "test.png", "NEW"),
+             new Product(1, "Diamond Jewelry Set", 50000, "/assets/diamondjewelryset.png", "NEW"),
+             new Product(2, "Skeleton Watch", 15000, "/assets/skeletonwatch.jpg", "NEW"),
+             new Product(3, "Side Stone Ring", 70000, "assets/sidestonering.png", "NEW"),
+             new Product(4, "GMT Master Rolex Watch", 90000, "GMTmaster.jpg", "NEW"),
+             new Product(5, "Leather Strap", 1750000, "leatherstrap.jpg", "NEW"),
+             new Product(6, "Tear Drop Ring", 4350000, "teardropring.jpg", "NEW"),
+             new Product(7, "Halo Ring", 1250000, "haloring.png", "NEW"),
+             new Product(8, "Diamond Set", 2250000, "diamondset.jpg", "NEW"),
          ]
      );
 
@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
             }
 
             cartTotalElem.innerText = store.getCart().length;
+
 
         });
      });

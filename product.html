@@ -41,9 +41,38 @@
 
 
 
+
 <section class="new-product">
+  <div class="search_bar_container">
+  <div class="search">
+     <input type="text" class="searchTerm" placeholder="Search">
+     <button type="submit" class="searchButton">
+       <i class="bx bx-search-alt-2"></i>
+    </button>
+  </div>
+</div>
   <div class="center-text">
   </div>
+  <div class="sort_search_container">
+    <div class="sort-container">
+      <label for="category" id="sort_by_price">Sort:</label><br>
+      <select id="rings" name="rings">
+        <option value="low_high">price low-high</option>
+        <option value="high_low">price high-low</option>
+      </select>
+    </div>
+    <div class="search-container">
+      <label for="category" id="search_by_category">Search by category:</label><br>
+      <select id="rings" name="rings">
+        <option value="mens">Watches</option>
+        <option value="ladies">Rings</option>
+        <option value="Sets">Sets</option>
+        <option value="Earrings">Earrings</option>
+      </select>
+    </div>
+  </div>
+  
+  
 <div class="new-content" id="new-products"></div>
 </section>
 
