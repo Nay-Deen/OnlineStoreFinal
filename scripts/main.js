@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
     const cartTotalElem = document.getElementById("cart__total");
     const cartItemsElem = document.getElementById("cart-items");
     const searchButton = document.getElementById("searchButton");
+    const category = document.getElementById("category");
+    const sort_by_price_value = document.getElementById("sort_by_price_value");
 
 
     /**
@@ -45,14 +47,14 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
 
      store.setProducts(
          [
-             new Product(1, "Diamond Jewelry Set", 50000, "/assets/diamondjewelryset.png", "NEW"),
-             new Product(2, "Skeleton Watch", 15000, "/assets/skeletonwatch.jpg", "NEW"),
-             new Product(3, "Side Stone Ring", 70000, "/assets/sidestonering.png", "NEW"),
-             new Product(4, "GMT Master Rolex Watch", 90000, "/assets/GMTmaster.jpg", "NEW"),
-             new Product(5, "Leather Strap", 1750000, "/assets/leatherstrap.jpg", "NEW"),
-             new Product(6, "Tear Drop Ring", 4350000, "/assets/teardropring.jpg", "NEW"),
-             new Product(7, "Halo Ring", 1250000, "/assets/haloring.png", "NEW"),
-             new Product(8, "Diamond Set", 2250000, "/assets/diamondset.jpg", "NEW"),
+             new Product(1, "Diamond Jewelry Set", 50000, "/assets/diamondjewelryset.png", "NEW", "SET"),
+             new Product(2, "Skeleton Watch", 15000, "/assets/skeletonwatch.jpg", "NEW", "WATCH"),
+             new Product(3, "Side Stone Ring", 70000, "/assets/sidestonering.png", "NEW", "RING"),
+             new Product(4, "GMT Master Rolex Watch", 90000, "/assets/GMTmaster.jpg", "NEW", "WATCH"),
+             new Product(5, "Leather Strap", 1750000, "/assets/leatherstrap.jpg", "NEW", "WATCH"),
+             new Product(6, "Tear Drop Ring", 4350000, "/assets/teardropring.jpg", "NEW", "RING"),
+             new Product(7, "Halo Ring", 1250000, "/assets/haloring.png", "NEW", "RING"),
+             new Product(8, "Diamond Set", 2250000, "/assets/diamondset.jpg", "NEW", "SET"),
          ]
      );
 
@@ -62,6 +64,45 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
      if (cartTotalElem) {
         cartTotalElem.innerText = store?.getCart()?.length;
      }
+
+      /**
+     * Team Members
+     */
+
+    const teamMembers = [
+        {
+            image: "./assets/team/nadine.jpg",
+            name: "Nadine Perchtold",
+            occupation: "Managing Director"
+        },
+        {
+            image: "./assets/team/jane.jpg",
+            name: "Jane Doe",
+            occupation: "Diamond Tester"
+        },
+        {
+            image: "./assets/team/john.jpg",
+            name: "John Doe",
+            occupation: "Diamond Forger"
+        }
+    ];
+
+    if (teamMembersElem) {
+
+        let teamMembersOutput = '';
+
+        teamMembers.forEach(teamMember => {
+            teamMembersOutput += `
+            <div class="team__member">
+                <img src="${teamMember.image}" alt="" class="team__member_img">
+                <h1 class="team__member_name">${teamMember.name}</h1>
+                <p class="team__member_occupation">${teamMember.occupation}</p>
+            </div>
+            `;
+        });
+    
+        teamMembersElem.innerHTML = teamMembersOutput;
+    }
 
      /**
       * CART
@@ -121,11 +162,56 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
             const searchTerm = document.getElementById("searchTerm")?.value;
 
             if (searchTerm) {
-                const searchedProducts = store.products.filter(item => item.includes(searchTerm));
+                const searchedProducts = store.getProducts().filter(item => item.name.toLowerCase().includes(searchTerm));
 
-                renderProducts();
+                renderProducts(searchedProducts);
             }
+        });
+      }
 
+      if (category) {
+        category.addEventListener("change", (e) => {
+
+            e.preventDefault();
+
+            const categoryTerm = e?.target?.value;
+
+            if (categoryTerm) {
+                const searchedProducts = store.getProducts().filter(item => {
+                    console.log(item);
+                    return item.type.toUpperCase().includes(categoryTerm);
+                });
+
+                renderProducts(searchedProducts);
+            } else {
+                renderProducts(store.getProducts());
+            }
+        });
+      }
+
+      if (sort_by_price_value) {
+        sort_by_price_value.addEventListener("change", (e) => {
+
+            e.preventDefault();
+
+            const sortTerm = e?.target?.value;
+            let searchedProducts = [];
+
+            if (sortTerm) {
+                switch(sortTerm) {
+                    case "1":
+                        searchedProducts = store.getProducts().sort((a, b) => a.price - b.price);
+                        break;
+                    case "2":
+                        searchedProducts = store.getProducts().sort((a, b) => b.price - a.price);
+                    default:
+                        searchedProducts = store.getProducts();
+                }
+
+                renderProducts(searchedProducts);
+            } else {
+                renderProducts(store.getProducts());
+            }
         });
       }
 

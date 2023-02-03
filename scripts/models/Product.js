@@ -16,13 +16,14 @@
      * @param {*} tag 
      */
 
-    constructor(id, name, price, image, tag) {
+    constructor(id, name, price, image, tag, type) {
         
         this.id = id;
         this.name = name;
         this.price = price;
         this.image = image;
         this.tag = tag;
+        this.type = type;
     }
 
     /**
@@ -67,6 +68,14 @@
 
     setTag(tag) {
         this.tag = tag;
+    }
+
+    getType() {
+        return this.type;
+    }
+
+    setType(type) {
+        this.type = type;
     }
     
 }
