@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
     let popularProductItemsElem = document.querySelector("#popular-items");
     const cartTotalElem = document.getElementById("cart__total");
     const cartItemsElem = document.getElementById("cart-items");
+    const searchButton = document.getElementById("searchButton");
 
 
     /**
@@ -46,62 +47,21 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
          [
              new Product(1, "Diamond Jewelry Set", 50000, "/assets/diamondjewelryset.png", "NEW"),
              new Product(2, "Skeleton Watch", 15000, "/assets/skeletonwatch.jpg", "NEW"),
-             new Product(3, "Side Stone Ring", 70000, "assets/sidestonering.png", "NEW"),
-             new Product(4, "GMT Master Rolex Watch", 90000, "GMTmaster.jpg", "NEW"),
-             new Product(5, "Leather Strap", 1750000, "leatherstrap.jpg", "NEW"),
-             new Product(6, "Tear Drop Ring", 4350000, "teardropring.jpg", "NEW"),
-             new Product(7, "Halo Ring", 1250000, "haloring.png", "NEW"),
-             new Product(8, "Diamond Set", 2250000, "diamondset.jpg", "NEW"),
+             new Product(3, "Side Stone Ring", 70000, "/assets/sidestonering.png", "NEW"),
+             new Product(4, "GMT Master Rolex Watch", 90000, "/assets/GMTmaster.jpg", "NEW"),
+             new Product(5, "Leather Strap", 1750000, "/assets/leatherstrap.jpg", "NEW"),
+             new Product(6, "Tear Drop Ring", 4350000, "/assets/teardropring.jpg", "NEW"),
+             new Product(7, "Halo Ring", 1250000, "/assets/haloring.png", "NEW"),
+             new Product(8, "Diamond Set", 2250000, "/assets/diamondset.jpg", "NEW"),
          ]
      );
 
-     let productsOutput = '';
- 
-     if (newProductItemsElem) {
-        store.getProducts().forEach(product => {
-            productsOutput += `
-            <div class="row" data-id="${product.id}">
-                <img src="./assets/popitem2.png">
-                <h4>${product.name}</h4>
-                <h5>R ${product.price}</h5>
-                <div class="top ${product.tag === "popular" && 'popular'}">
-                <p>${product.tag}</p>
-                </div>
-                <div class="bbtn" >
-                    <a data-id="${product.id}" class="add__to__cart__btn">Add to cart</a>
-                </div>
-            </div>
-            `;
-         });
-    
-         newProductItemsElem.innerHTML = productsOutput;
-         if (popularProductItemsElem) {
-            popularProductItemsElem.innerHTML = productsOutput;
-         }
+     
+     renderProducts(store.getProducts());
+
+     if (cartTotalElem) {
+        cartTotalElem.innerText = store?.getCart()?.length;
      }
-
-     Array.from(document.querySelectorAll(".add__to__cart__btn")).forEach(btn => {
-
-        btn.addEventListener("click", (event) => {
-
-            event.preventDefault();
-
-            const product = store.getProductById(event.target.dataset.id);
-
-            const cartItemIndex = store.getCartItemIndexById(product.id);
-
-            if (cartItemIndex === -1) {
-                store.addProductToCart(new CartItem(product));
-            }
-
-            cartTotalElem.innerText = store.getCart().length;
-
-
-        });
-     });
-
-
-     cartTotalElem.innerText = store?.getCart()?.length;
 
      /**
       * CART
@@ -151,6 +111,69 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
             });
          });
 
+      }
+
+      if (searchButton) {
+        searchButton.addEventListener("click", (e) => {
+
+            e.preventDefault();
+
+            const searchTerm = document.getElementById("searchTerm")?.value;
+
+            if (searchTerm) {
+                const searchedProducts = store.products.filter(item => item.includes(searchTerm));
+
+                renderProducts();
+            }
+
+        });
+      }
+
+      function renderProducts(products) {
+        let productsOutput = '';
+ 
+     if (newProductItemsElem) {
+        products.forEach(product => {
+            productsOutput += `
+            <div class="row" data-id="${product.id}">
+                <img src="${product.image}">
+                <h4>${product.name}</h4>
+                <h5>R ${product.price}</h5>
+                <div class="top ${product.tag === "popular" && 'popular'}">
+                <p>${product.tag}</p>
+                </div>
+                <div class="bbtn" >
+                    <a data-id="${product.id}" class="add__to__cart__btn">Add to cart</a>
+                </div>
+            </div>
+            `;
+         });
+    
+         newProductItemsElem.innerHTML = productsOutput;
+         if (popularProductItemsElem) {
+            popularProductItemsElem.innerHTML = productsOutput;
+         }
+     }
+
+     Array.from(document.querySelectorAll(".add__to__cart__btn")).forEach(btn => {
+
+        btn.addEventListener("click", (event) => {
+
+            event.preventDefault();
+
+            const product = store.getProductById(event.target.dataset.id);
+
+            const cartItemIndex = store.getCartItemIndexById(product.id);
+
+            if (cartItemIndex === -1) {
+                store.addProductToCart(new CartItem(product));
+            }
+
+            cartTotalElem.innerText = store.getCart().length;
+
+
+        });
+     });
       }
 
 

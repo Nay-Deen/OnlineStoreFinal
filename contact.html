@@ -40,45 +40,82 @@
   <div class="title">
     <h2>Get in touch</h2>
   </div>
-  <div class="box">
-    <!-- formbox -->
-    <div class="contact form">
-      <h3>send a message</h3>
-      <form>
-        <div class="form_box">
-          <div class="row50">
+  <section class="container-row">
+    <div class="formbox">
+      <!-- formbox -->
+        <form>
+          <h1>Send a Message</h1>
+          <div class="form_box">
+            <div class="row50">
+              <div class="input_box">
+                <span>First name</span>
+                <input type="text" placeholder="John">
+              </div>
             <div class="input_box">
-              <span>First name</span>
-              <input type="text" placeholder="John">
+              <span>Last name</span>
+              <input type="text" placeholder="Doe">
             </div>
-          <div class="input_box">
-            <span>Last name</span>
-            <input type="text" placeholder="Doe">
-          </div>
-          </div>
-          <div class="row50">
+            </div>
+            <div class="row50">
+              <div class="input_box">
+                <span>Email</span>
+                <input type="text" placeholder="Johndoe@email.com">
+              </div>
             <div class="input_box">
-              <span>Email</span>
-              <input type="text" placeholder="Johndoe@email.com">
+              <span>Mobile</span>
+              <input type="text" placeholder="+12345678910">
             </div>
-          <div class="input_box">
-            <span>Mobile</span>
-            <input type="text" placeholder="+12345678910">
           </div>
-        </div>
-      </form>
+          </div>
+          <div class="row100">
+            <div class="input_box">
+              <span>Message</span>
+              <textarea placeholder="Write your message here..."></textarea>
+            </div>
+          </div>
+          <div class="row100">
+            <div class="input_box">
+              <input type="submit" value="send">
+            </div>
+          </div>
+        </form>
     </div>
     <!-- infobox -->
-    <div class="contact info"></div>
-    <!-- mapbox -->
-    <div class="contact map"></div>
+      <div class="right-panel">
+        <div class="contact-info">
+          <h1>Contact Info</h1>
+          <div class="info_box">
+            <span><i class="bx bx-location-plus"></i></span>
+            <p>22 Happiness Road, Sparkle, SOUTH AFRICA</p>
+          </div>
+          <div class="info_box">
+          <span><i class="bx bx-envelope"></i></span>
+            <a href="dazzlejewelry@sparkle.com">dazzlejewelry@sparkle.com</a>
+          </div>
+          <div class="info_box">
+            <span><i class="bx bx-phone"></i></span>
+            <a href="tel:+12345678910">+12345678910</a>
+            </div>
+        
+        <!-- social icons -->
+        <div class="social">
+          <a href="#"><i class="bx bxl-facebook"></i></a>
+          <a href="#"><i class="bx bxl-instagram-alt"></i></a>
+          <a href="#"><i class="bx bxl-twitter"></i></a>
+        </div>
+        </div>
+      </div>
+    </section>
+    <div class="contact-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.63823543816!2d18.44652591573439!3d-33.92470922939533!2m3!1f0!2f0!3f0!
+      3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5d9854044ed9%3A0x6a0ebf49da5aabab!2sCodeSpace!5e0!3m2!1sen!2sza!4v1675442730434!5m2!1sen!2sza"
+       style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
   </div>
 </div>
-</div>
-
 
 <script src="scripts/main.js" type="module"></script>
-<script type="text/javascript"
+<!-- <script type="text/javascript"
     src="http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize">
 </script>
 <script type="text/javascript">
@@ -101,6 +138,6 @@ function initialize() {
 });   
 }
 
-</script>
+</script> -->
 </body>
 </html>
