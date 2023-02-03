@@ -71,7 +71,7 @@ import CartItem from "./CartItem.js";
     }
 
     getCartItemIndexById(id) {
-        return this.cart.findIndex(item => item.id === id);
+        return this.cart.findIndex(item => item.id == id);
     }
 
     getCartItemById(id) {

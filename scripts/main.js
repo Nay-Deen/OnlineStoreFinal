@@ -109,14 +109,16 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
       * CART
       */
       let cartOutput = '';
+      let cartSubtotal = 0;
  
       if (cartItemsElem) {
         store.getCart().forEach(cartItem => {
+            cartSubtotal += (cartItem.price * cartItem.quantity);
             cartOutput += `
              <div class="cart-item" id="cart-item-${cartItem.id}">
             <div class="cart-item-top">
                 <div class="image-container">
-                    <img src="">
+                    <img src="${cartItem.image}">
                     <h2 class="cart-item-name">${cartItem.name}</h2>
                 </div>
                 <h2 class="cart-item-price">Qty ${cartItem.quantity}</h2>
@@ -130,6 +132,7 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
           });
      
           cartItemsElem.innerHTML = cartOutput || "<h2>No Cart Items. Go to Products</h2>";
+          document.getElementById("subtotal").innerText = cartSubtotal && `Subtotal: R ${cartSubtotal}`;
 
           Array.from(document.querySelectorAll(".cart-item-remove-from-cart-btn")).forEach(btn => {
 
@@ -139,7 +142,9 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
     
                 const cartItemIndex = store.getCartItemIndexById(event.target.dataset.id);
     
-                if (cartItemIndex === -1) {
+                if (cartItemIndex !== -1) {
+                    cartSubtotal -= store.getCart()[cartItemIndex].price
+                    document.getElementById("subtotal").innerText = cartSubtotal && `Subtotal: R ${cartSubtotal}`;
                     store.removeProductToCart(cartItemIndex);
                     document.getElementById("cart-item-"+event.target.dataset.id)?.remove();
                 }
