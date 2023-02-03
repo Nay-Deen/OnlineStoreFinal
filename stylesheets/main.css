@@ -402,6 +402,36 @@ section{
     padding-top: 1rem;
     margin: 0 auto;
 }
+
+#our__team {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+    align-items: center;
+    gap: 2.5rem;
+    margin-top: 4.5rem;
+    text-align: center;    
+}
+
+.team__member {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 8px;
+    transition: .4s all ease-in;
+    padding-bottom: 10px;
+}
+
+.team__member_img {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    padding-bottom: 10px;
+}
+
+.team__member:hover {
+    transform: translateY(-20px);
+}
+
 .social i{
     height: 37px;
     width: 37px;
@@ -476,6 +506,28 @@ section{
     padding: 1.5em;
     border-radius: 4px;
     margin-right: 4em;
+}
+
+.fotorama {
+    border-radius: 8px !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+
+.fotorama__img {
+    width: 100%;
+    height: auto;
+    transition: all .5s ease !important;
+}
+
+.fotorama__img:hover {
+    transform: scale(1.10) !important;
+    transition: all .5s ease;
+}
+
+.lookbook_title {
+    font-size: 3rem;
+    font-weight: bolder;
+    margin-bottom: .8em;
 }
 
 .formbox  h1 {

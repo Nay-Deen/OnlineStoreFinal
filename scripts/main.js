@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
     const searchButton = document.getElementById("searchButton");
     const category = document.getElementById("category");
     const sort_by_price_value = document.getElementById("sort_by_price_value");
+    const teamMembersElem = document.getElementById("our__team");
 
 
     /**
@@ -154,6 +155,10 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
 
       }
 
+      /**
+     * SEARCH, SORT & FILTER FUNCTIONALITY ON PRODUCT/SHOP PAGE
+     */
+
       if (searchButton) {
         searchButton.addEventListener("click", (e) => {
 
@@ -214,6 +219,10 @@ document.addEventListener("DOMContentLoaded", (evt) =>{
             }
         });
       }
+
+    /**
+     * UTILS FUNCTIONS
+     */
 
       function renderProducts(products) {
         let productsOutput = '';
