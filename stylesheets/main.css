@@ -23,6 +23,7 @@ body{
     color: var(--text-color);
     background: var(--bg-color);
 }
+/* navbar */
 header{
     position: fixed;
     width: 100%;
@@ -86,6 +87,7 @@ header{
 section{
     padding: 60px 14% 70px;
 }
+/* home page */
 .home{
     position: relative;
     width: 100%;
@@ -288,6 +290,7 @@ section{
 .main-box h3:hover{
     color: var(--main-color);
 }
+/* contact page */
 .contact{
     display: flex;
     flex-direction: row;
@@ -299,81 +302,60 @@ section{
   .contact-box{
     width: calc(25% - 10px);
   }
+.wrapper{
+    background: linear-gradient(90deg,#bc7877 0%,#bc7877 30%, #562d32 30%, #562d32 100%);
+}
+.contact_us {
+    margin-top: 6em;
+    position: relative;
+    width: 100%;
+    padding: 40px 100px;
   
-
-.contact-content {
-    margin-bottom: 4em;
 }
 
-.contact-content h1 {
-    font-size: 3rem;
-}
-
-.contact-content p {
-    font-size: 1.2rem;
-}
-
-.contact-horizontal {
+.contact_us .title{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.contact-horizontal .map {
-    width: 500px;
-    height: 500px;
-    background-image: url(../assets/tets.jpg);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-  
-.contact-box h4{
-    margin-bottom: 1.5rem;
-    font-size: 18px;
-    color: var(--bg-color);
-}
-.contact-box li{
-    margin-bottom: 18px;
-}
-.contact-box li a{
-    display: block;
-    color: #999999;
-    font-size: 15px;
-    font-weight: 500;
-    transition: all .50s ease;
-}
-
-.contactInfo {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+.contact_us .title h2{
+    color: #f2f2f2;
+    font-weight: 500;
 }
 
-.contactInfo .box {
-    margin-bottom: 2em;
+.form{
+    grid-area: form;
 }
-
-.contactInfo .box h3  {
-    font-size: 1.8rem;
-    color: #ccc;
+.info{
+    grid-area: info;
 }
-
-.contactInfo .box p  {
-    font-size: 1.2rem;
-    color: #eee;
+.map{
+    grid-area: map;
 }
-
-.contact-box li a:hover{
-    transform: translateX(-7);
-    color: #010101;
+.contact{
+    padding: 40px;
+    background: #f2f2f2;
+    box-shadow: 0 5px 35px rgba(0,0,0,0,15);
 }
-
-.contact-box h5{
-    font-size: 16px;
-    font-weight: 600;
-    color: #999999;
+.box{
+    position: relative;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 5fr 4fr;
+    grid-template-areas:
+    "form info"
+    "form map";
+    grid-gap: 20px;
+    margin-top: 20px;
 }
+.contact h3{
+    color:#562d32;
+    font-weight: 500;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+/* social icons */
 .social{
     display: flex;
     margin-top: 1.8rem;
@@ -419,7 +401,7 @@ section{
     position: relative;
     width: 100%;
     height: 100vh;
-    background-image: url(./assets/abthero2.jpg);
+    background-image: url(/assets/abthero2.jpg);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -624,25 +606,6 @@ form {
     background-color: rgba(255, 255, 255, 0.2);
   }
   
-
-/* body{
-    background: #f2f2f2;
-    font-family: 'Open Sans', sans-serif;
-  }
-  
-.sort-search-container {
-    display: flex;
-    justify-content: flex-end;
- }
- 
- .sort-container, .search-container {
-    float: right;
-    margin-right: 40px;
- }
- #sort_by_price{
-    color:var(--second-color) ;
-    
- } */
 
 .image-container {
     display: flex;
